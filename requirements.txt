@@ -1,0 +1,9 @@
+fastapi[standard]
+httpx
+sqlalchemy
+asyncpg
+alembic
+pydantic-settings
+python-dotenv
+pytest
+pytest-asyncio
