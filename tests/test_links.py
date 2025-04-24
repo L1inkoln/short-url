@@ -1,3 +1,4 @@
+from unittest.mock import AsyncMock, MagicMock
 import pytest
 from app.services.link_service import create_link, get_link_and_increment_clicks
 
@@ -5,6 +6,10 @@ from app.services.link_service import create_link, get_link_and_increment_clicks
 @pytest.mark.asyncio
 async def test_create_link(mock_db_session):
     test_url = "https://example.com"
+
+    mock_result = MagicMock()
+    mock_result.scalars.return_value.first.return_value = None
+    mock_db_session.execute = AsyncMock(return_value=mock_result)
     result = await create_link(mock_db_session, test_url)
 
     assert result.original_url == test_url

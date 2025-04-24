@@ -1,9 +1,13 @@
-fastapi[standard]
+fastapi
+uvicorn[standard]
 httpx
-sqlalchemy
+sqlalchemy[asyncio]
 asyncpg
 alembic
 pydantic-settings
 python-dotenv
 pytest
 pytest-asyncio
+prometheus_client
+psycopg2-binary
+prometheus-fastapi-instrumentator
