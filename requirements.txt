@@ -1,13 +1,11 @@
 fastapi
 uvicorn[standard]
-httpx
 sqlalchemy[asyncio]
 asyncpg
 alembic
 pydantic-settings
-python-dotenv
 pytest
 pytest-asyncio
 prometheus_client
+prometheus_fastapi_instrumentator
 psycopg2-binary
-prometheus-fastapi-instrumentator

@@ -21,7 +21,7 @@ class LinkCreate(LinkBase):
 
 
 class LinkStats(LinkBase):
-    short_code: str = Field(default=..., min_length=1, max_length=10)
+    short_code: str = Field(default=..., min_length=3, max_length=10)
     clicks: int = Field(default=..., ge=0)
     created_at: datetime
     last_clicked_at: Optional[datetime]

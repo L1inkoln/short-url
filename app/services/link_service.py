@@ -6,6 +6,7 @@ from sqlalchemy import select, update
 from app.db.models import Link
 
 
+# Создание короткой ссылки и проверка на существующий короткий код
 async def create_link(
     db: AsyncSession, original_url: str, custom_alias: str | None = None
 ) -> Link:
@@ -29,6 +30,7 @@ async def create_link(
     return link
 
 
+# Функция которая возвращает оригинальную ссылку для редиректа
 async def get_link_and_increment_clicks(
     db: AsyncSession, short_code: str
 ) -> Link | None:
@@ -42,6 +44,7 @@ async def get_link_and_increment_clicks(
     return result.scalars().first()
 
 
+# Просмотр статистики для короткой ссылки
 async def get_link_info(db: AsyncSession, short_code: str) -> Link | None:
     result = await db.execute(select(Link).where(Link.short_code == short_code))
     return result.scalars().first()

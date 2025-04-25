@@ -5,7 +5,8 @@ from fastapi import APIRouter
 router = APIRouter(tags=["metrics"])
 
 
+# Prometheus
 @router.get("/metrics")
 @router.get("/metrics/")
-def metrics():
+async def metrics():
     return Response(generate_latest(), media_type=CONTENT_TYPE_LATEST)

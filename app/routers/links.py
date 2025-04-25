@@ -13,12 +13,14 @@ from app.db.session import get_db
 router = APIRouter(prefix="/links", tags=["Links"])
 
 
+# Создание ссылки по шорт коду либо генерация случйного
 @router.post("/", response_model=LinkResponse)
 async def create_short_link(link_data: LinkCreate, db: AsyncSession = Depends(get_db)):
     link = await create_link(db, str(link_data.original_url), link_data.custom_alias)
     return link
 
 
+# Редирект на оригинальный url при переходе на ссылку
 @router.get("/r/{short_code}")
 async def redirect_link(short_code: str, db: AsyncSession = Depends(get_db)):
     link = await get_link_and_increment_clicks(db, short_code)
